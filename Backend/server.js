@@ -43,12 +43,66 @@
 //   console.log(`Server running on http://localhost:${PORT}`);
 // });
 
+// const path = require("path");
+// const express = require("express");
+// const cors = require("cors");
+// const dotenv = require("dotenv");
+
+// dotenv.config();
+
+// const app = express();
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+
+// // Static uploads
+// app.use(
+//   "/uploads",
+//   express.static(path.join(__dirname, "uploads"))
+// );
+
+// // Test route
+// app.get("/", (req, res) => {
+//   res.json({
+//     message: "Shynora Jewels Backend is running!"
+//   });
+// });
+
+// // Routes
+// app.use(
+//   "/api/products",
+//   require("./routes/productRoutes")
+// );
+
+// app.use(
+//   "/api/orders",
+//   require("./routes/orderRoutes")
+// );
+
+// app.use(
+//   "/api/auth",
+//   require("./routes/authRoutes")
+// );
+
+// // Export app for Vercel
+// module.exports = app;
+
+const dns = require("dns");
+
+dns.setServers([
+  "8.8.8.8",
+  "8.8.4.4"
+]);
+
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
 dotenv.config();
+
+const connectDB = require("./config/db");
 
 const app = express();
 
@@ -57,10 +111,7 @@ app.use(cors());
 app.use(express.json());
 
 // Static uploads
-app.use(
-  "/uploads",
-  express.static(path.join(__dirname, "uploads"))
-);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Test route
 app.get("/", (req, res) => {
@@ -69,21 +120,24 @@ app.get("/", (req, res) => {
   });
 });
 
-// Routes
-app.use(
-  "/api/products",
-  require("./routes/productRoutes")
-);
+// API routes
+app.use("/api/products", require("./routes/productRoutes"));
+app.use("/api/orders", require("./routes/orderRoutes"));
+app.use("/api/auth", require("./routes/authRoutes"));
 
-app.use(
-  "/api/orders",
-  require("./routes/orderRoutes")
-);
+// Vercel handler
+const handler = async (req, res) => {
+  try {
+    await connectDB();
+    return app(req, res);
+  } catch (error) {
+    console.error("Server error:", error);
 
-app.use(
-  "/api/auth",
-  require("./routes/authRoutes")
-);
+    return res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
+  }
+};
 
-// Export app for Vercel
-module.exports = app;
+module.exports = handler;

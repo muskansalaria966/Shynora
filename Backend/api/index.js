@@ -14,3 +14,7 @@ module.exports = async (req, res) => {
     });
   }
 };
+
+const handler = require("../server");
+
+module.exports = handler;
