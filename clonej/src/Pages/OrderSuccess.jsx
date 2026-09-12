@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import "./OrderSuccess.css";
 
 function OrderSuccess() {
   const { id } = useParams();
