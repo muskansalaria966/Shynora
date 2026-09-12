@@ -6,13 +6,13 @@
   justify-content: center;
   text-align: center;
   padding: 40px 20px;
-  background: #fffaf4;
-  color: #3d2b1f;
+  background: #fff8f8;
+  color: #4a3035;
 }
 
 .order-success h1 {
   margin-bottom: 20px;
-  color: #b8860b;
+  color: #b76e79;
   font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -20,27 +20,27 @@
 
 .order-success p {
   margin: 10px 0 8px;
-  color: #806b5a;
+  color: #9b737b;
   font-size: 1.05rem;
 }
 
 .order-success h2 {
   margin: 0 0 30px;
   padding: 14px 28px;
-  border: 1px solid #d4af37;
+  border: 1px solid #d8a0a8;
   border-radius: 8px;
   background: #ffffff;
-  color: #4a3425;
+  color: #704650;
   font-size: 1.3rem;
   letter-spacing: 1px;
-  box-shadow: 0 5px 18px rgba(184, 134, 11, 0.12);
+  box-shadow: 0 5px 18px rgba(183, 110, 121, 0.15);
 }
 
 .order-success a {
   display: inline-block;
   padding: 13px 28px;
   border-radius: 6px;
-  background: #b8860b;
+  background: #b76e79;
   color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
@@ -49,9 +49,9 @@
 }
 
 .order-success a:hover {
-  background: #8f6508;
+  background: #965563;
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(184, 134, 11, 0.25);
+  box-shadow: 0 6px 15px rgba(183, 110, 121, 0.25);
 }
 
 @media (max-width: 600px) {
@@ -65,8 +65,9 @@
   }
 
   .order-success h2 {
-    font-size: 1.05rem;
+    max-width: 90%;
     padding: 12px 18px;
+    font-size: 1.05rem;
     word-break: break-word;
   }
 
