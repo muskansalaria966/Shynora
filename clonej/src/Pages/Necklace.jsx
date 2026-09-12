@@ -1,102 +1,59 @@
-// function Necklace() {
-//   return (
-//     <div>
-//       <h1>Necklace Collection</h1>
-//       <p>Welcome to our beautiful necklace collection.</p>
+import { useEffect, useState } from "react";
+import { getProductsByCategory } from "../services/api";
+import ProductCard from "../components/ProductCard";
 
-//       <img
-//         src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80"
-//         alt="Necklace"
-//         width="300"
-//       />
-//     </div>
-//   );
-// }
+const Necklace = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-// export default Necklace;
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const data = await getProductsByCategory("Necklace");
 
-// import { Link } from "react-router-dom";
-// import necklaceData from "../Components/Necklacedata";
+        console.log("NECKLACE DATA:", data);
 
-// function Necklace() {
-//   return (
-//     <div className="necklace-page1">
-//       <h1>Necklace Collection</h1>
-//        <p>Welcome to our beautiful necklace collection.</p>
+        setProducts(data);
+      } catch (err) {
+        console.error("NECKLACE ERROR:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-//       <div className="necklace-grid1">
-//         {necklaceData.map((item) => (
-//           <div className="necklace-card1" key={item.id}>
-//             <img src={item.image} alt={item.category} />
+    loadProducts();
+  }, []);
 
-//             <h2>{item.category}</h2>
-
-//             <Link to={`/necklace/${item.id}`}>
-//               <button>Shop Now</button>
-//             </Link>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Necklace;
-
-import { Link } from "react-router-dom";
-// import "./necklace.css";
-
-const categories = [
-  {
-    id: "gold",
-    name: "Gold Necklaces",
-    image: "/necklace/images.jpeg",
-  },
-  {
-    id: "diamond",
-    name: "Diamond Necklaces",
-    image: "/necklace/diamond.jpeg",
-  },
-  {
-    id: "bridal",
-    name: "Bridal Necklaces",
-    image: "/necklace/bridal.jpeg",
-  },
-  {
-    id: "choker",
-    name: "Choker Necklaces",
-    image: "/necklace/chokar.jpeg",
-  },
-  {
-    id: "pearl",
-    name: "Pearl Necklaces",
-    image: "/necklace/pearl.jpeg",
-  },
-  {
-    id: "layered",
-    name: "Layered Necklaces",
-    image: "/necklace/layered.jpeg",
+  if (loading) {
+    return <h2>Loading necklaces...</h2>;
   }
-];
 
-export default function Necklace() {
+  if (error) {
+    return <h2>{error}</h2>;
+  }
+
   return (
-    <div className="necklace-page">
+    <section className="collection">
+
       <h1>Necklace Collection</h1>
 
-      <div className="necklace-grid">
-        {categories.map((item) => (
-          <div className="necklace-card" key={item.id}>
-            <img src={item.image} alt={item.name} />
+      <div className="product-grid">
 
-            <h2>{item.name}</h2>
-
-            <Link to={`/necklaces/${item.id}`} className="btn">
-              Shop Now
-            </Link>
-          </div>
+        {products.map((product) => (
+          <ProductCard
+            key={product._id}
+            product={product}
+          />
         ))}
+
       </div>
-    </div>
+
+    </section>
   );
-}
+};
+
+export default Necklace;
+
+

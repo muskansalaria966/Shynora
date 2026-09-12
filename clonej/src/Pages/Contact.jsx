@@ -1,16 +1,3 @@
-// function Contact() {
-//   return (
-//     <div className="page">
-//       <h1>Contact Us</h1>
-//       <p>Email: info@luxejewels.com</p>
-//       <p>Phone: +91 9876543210</p>
-//     </div>
-//   );
-// }
-
-// export default Contact;
-
-// ContactPage.jsx
 import React from "react";
 const ContactPage = () => {
   return (
@@ -41,12 +28,6 @@ const ContactPage = () => {
             <h3>✉ Email</h3>
             <p>support@luxejewels.com</p>
           </div>
-
-          {/* <div className="socials">
-            <a href="/">Instagram</a>
-            <a href="/">Facebook</a>
-            <a href="/">Pinterest</a>
-          </div> */}
         </div>
 
         {/* Right Section */}

@@ -1,0 +1,378 @@
+/* =========================================
+   GRAND WEDDING STORE
+========================================= */
+
+.wedding-section {
+  width: 100%;
+  background: #fff8f9;
+  overflow: hidden;
+}
+
+/* =========================================
+   BANNER
+========================================= */
+
+.wedding-banner {
+  width: 100%;
+  padding: 55px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.35), transparent 30%),
+    radial-gradient(circle at 80% 50%, rgba(255,255,255,0.25), transparent 30%),
+    #f8e1e6;
+  box-sizing: border-box;
+}
+
+.banner-inner {
+  width: min(900px, 90%);
+  min-height: 260px;
+  padding: 45px 25px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    #b96880,
+    #d99aaa,
+    #b96880
+  );
+
+  border: 2px solid rgba(255,255,255,0.85);
+  border-radius: 50% 50% 20px 20px / 28% 28% 20px 20px;
+
+  box-shadow:
+    0 20px 50px rgba(130, 55, 75, 0.18);
+
+  text-align: center;
+}
+
+.banner-small {
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 6px;
+}
+
+.banner-inner h2 {
+  margin: 8px 0 2px;
+  color: #fffafc;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: 5px;
+}
+
+.banner-inner h3 {
+  margin: 8px 0 0;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 3vw, 30px);
+  letter-spacing: 4px;
+}
+
+.banner-inner p {
+  margin: 18px 0 0;
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.wedding-categories {
+  padding: 75px 5% 90px;
+  background: #fff8f9;
+}
+
+.wedding-heading {
+  max-width: 650px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.wedding-heading span {
+  color: #c36383;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.wedding-heading h2 {
+  margin: 12px 0;
+  color: #4d2934;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 500;
+}
+
+.wedding-heading p {
+  margin: 0 auto;
+  max-width: 550px;
+  color: #80636b;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   GRID
+========================================= */
+
+.wedding-category-grid {
+  max-width: 1450px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 25px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.wedding-category-card {
+  min-width: 0;
+  padding: 8px 8px 0;
+
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 30px rgba(100, 40, 55, 0.08);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.wedding-category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(100, 40, 55, 0.15);
+}
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.wedding-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 330px;
+
+  overflow: hidden;
+  border-radius: 15px;
+
+  background: #f4eeee;
+}
+
+.wedding-image-wrapper img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+
+  transition: transform 0.6s ease;
+}
+
+.wedding-category-card:hover .wedding-image-wrapper img {
+  transform: scale(1.07);
+}
+
+/* =========================================
+   HOVER OVERLAY
+========================================= */
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  padding-bottom: 20px;
+
+  background: linear-gradient(
+    to top,
+    rgba(50, 20, 30, 0.55),
+    transparent 45%
+  );
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.category-overlay span {
+  padding: 8px 18px;
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 20px;
+
+  color: white;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(5px);
+}
+
+.wedding-category-card:hover .category-overlay {
+  opacity: 1;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.wedding-category-title {
+  min-height: 75px;
+  padding: 20px 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: #b96880;
+
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1200px) {
+  .wedding-category-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .wedding-image-wrapper {
+    height: 300px;
+  }
+}
+
+@media (max-width: 900px) {
+  .wedding-categories {
+    padding: 60px 4% 70px;
+  }
+
+  .wedding-category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .wedding-image-wrapper {
+    height: 270px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .wedding-banner {
+    padding: 35px 15px;
+  }
+
+  .banner-inner {
+    width: 95%;
+    min-height: 190px;
+    padding: 30px 15px;
+  }
+
+  .banner-small {
+    font-size: 13px;
+    letter-spacing: 4px;
+  }
+
+  .banner-inner h2 {
+    font-size: 40px;
+    letter-spacing: 3px;
+  }
+
+  .banner-inner h3 {
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .banner-inner p {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .wedding-categories {
+    padding: 50px 12px 60px;
+  }
+
+  .wedding-heading {
+    margin-bottom: 32px;
+  }
+
+  .wedding-heading span {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .wedding-heading h2 {
+    font-size: 32px;
+  }
+
+  .wedding-heading p {
+    font-size: 14px;
+  }
+
+  .wedding-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .wedding-category-card {
+    padding: 6px 6px 0;
+    border-radius: 15px;
+  }
+
+  .wedding-image-wrapper {
+    height: 220px;
+    border-radius: 11px;
+  }
+
+  .wedding-category-title {
+    min-height: 65px;
+    padding: 12px 3px;
+    font-size: 10px;
+    letter-spacing: 0.7px;
+  }
+
+  .category-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .wedding-image-wrapper {
+    height: 190px;
+  }
+
+  .wedding-category-title {
+    font-size: 9px;
+  }
+}

@@ -32,11 +32,10 @@ const Testimonials = () => {
   return (
     <section className="testimonial-section">
       <div className="testimonial-header">
-        <span>♡ Testimonials</span>
+        <span className="testimonial-label">♡ CUSTOMER STORIES</span>
 
         <h2>
-          Loved by
-          <span> Thousands of Customers</span>
+          Loved by <span>Thousands</span>
         </h2>
 
         <p>
@@ -47,21 +46,27 @@ const Testimonials = () => {
 
       <div className="testimonial-container">
         {testimonials.map((item) => (
-          <div className="testimonial-card" key={item.id}>
-            <div className="quote">❝</div>
+          <article className="testimonial-card" key={item.id}>
+            <div className="quote">“</div>
 
-            <img src={item.image} alt={item.name} />
+            <div className="testimonial-profile">
+              <img src={item.image} alt={item.name} loading="lazy" />
 
-            <h3>{item.name}</h3>
+              <div>
+                <h3>{item.name}</h3>
 
-            <div className="stars">
-              {[...Array(item.rating)].map((_, index) => (
-                <FaStar key={index} />
-              ))}
+                <div className="stars" aria-label={`${item.rating} out of 5 stars`}>
+                  {[...Array(item.rating)].map((_, index) => (
+                    <FaStar key={index} />
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <p>{item.review}</p>
-          </div>
+            <p className="testimonial-review">{item.review}</p>
+
+            <span className="verified">✓ Verified Customer</span>
+          </article>
         ))}
       </div>
     </section>

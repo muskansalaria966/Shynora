@@ -20,7 +20,6 @@ export default function HeroSection() {
 
   return (
     <section className="hero">
-      {/* Left Content */}
       <div className="hero-left">
         <span className="tag">✨ Timeless Luxury</span>
 
@@ -36,37 +35,38 @@ export default function HeroSection() {
           every moment unforgettable.
         </p>
 
-        {/* <div className="buttons">
-          <button className="primary-btn">Explore Collection</button>
-          <button className="secondary-btn">New Arrivals</button>
-        </div> */}
-
         <div className="buttons">
           <Link to="/collection">
-           <button className="primary-btn">Explore Collection</button>
+            <button className="primary-btn">Explore Collection</button>
           </Link>
 
-          <Link to="/NewArrivals">
-           <button className="secondary-btn">New Arrivals</button>
+          <Link to="/collection">
+            <button className="secondary-btn">Shop New Arrivals</button>
           </Link>
         </div>
-
-        
       </div>
 
-      {/* Right Image Slider */}
       <div className="hero-right">
         <div className="image-card">
           {images.map((img, index) => (
             <img
-              key={index}
+              key={img}
               src={img}
-              alt="Jewellery"
+              alt={`Jewellery collection ${index + 1}`}
               className={index === current ? "active" : ""}
             />
           ))}
 
-          
+          <div className="slider-dots">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                className={index === current ? "active" : ""}
+                onClick={() => setCurrent(index)}
+                aria-label={`Show jewellery image ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

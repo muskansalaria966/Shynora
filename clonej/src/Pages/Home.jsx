@@ -1,13 +1,14 @@
 import Hero from "../components/Hero";
-import Products from "../components/Products";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
+import WeddingSection from "../components/WeddingSection";
+
 
 function Home() {
   return (
     <>
       <Hero />
-      <Products />
+      <WeddingSection />  
       <Testimonials />
       <Footer />
     </>
@@ -15,3 +16,4 @@ function Home() {
 }
 
 export default Home;
+

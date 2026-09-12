@@ -1,0 +1,510 @@
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  min-height: 76px;
+
+  padding: 0 5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+
+  background: #f8dfe5;
+  border-bottom: 1px solid #edc5cf;
+
+  box-shadow: 0 4px 18px rgba(170, 80, 105, 0.06);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #c36383;
+  text-decoration: none;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.logo-icon {
+  color: #c36383;
+}
+
+
+/* =========================================
+   DESKTOP LINKS
+========================================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.nav-links a {
+  color: #754255;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: #c36383;
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+/* =========================================
+   ICONS
+========================================= */
+
+.nav-icon {
+  position: relative;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #9f5b72;
+  text-decoration: none;
+
+  border-radius: 50%;
+}
+
+.nav-icon:hover {
+  color: #c36383;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+
+/* =========================================
+   CART COUNT
+========================================= */
+
+.cart-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  min-width: 17px;
+  height: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 4px;
+
+  box-sizing: border-box;
+
+  border-radius: 50%;
+
+  background: #c36383;
+  color: white;
+
+  font-size: 9px;
+  font-weight: bold;
+}
+
+
+/* =========================================
+   USER
+========================================= */
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #754255;
+
+  font-size: 13px;
+}
+
+.user-icon {
+  color: #c36383;
+}
+
+.admin-link,
+.orders-link {
+  color: #9f5b72;
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.admin-link:hover,
+.orders-link:hover {
+  color: #c36383;
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.logout-btn {
+  width: auto;
+
+  padding: 8px 15px;
+
+  border: 1px solid #d59aae;
+  border-radius: 20px;
+
+  background: transparent;
+  color: #9f5b72;
+
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #c36383;
+  color: white;
+}
+
+
+/* =========================================
+   LOGIN / REGISTER
+========================================= */
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-link {
+  color: #9f5b72;
+  text-decoration: none;
+
+  font-size: 13px;
+}
+
+.register-btn {
+  padding: 9px 17px;
+
+  border-radius: 22px;
+
+  background: #c36383;
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   HAMBURGER
+========================================= */
+
+.mobile-menu-btn {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+
+  border: none;
+
+  background: transparent;
+  color: #9f5b72;
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+.mobile-menu {
+  display: none;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 750px) {
+
+  .navbar {
+    min-height: 68px;
+    height: 68px;
+
+    padding: 0 14px;
+
+    position: sticky;
+    top: 0;
+  }
+
+  /* Hide desktop navigation */
+
+  .nav-links {
+    display: none;
+  }
+
+  .desktop-user,
+  .desktop-auth {
+    display: none;
+  }
+
+  /* Logo */
+
+  .logo {
+    font-size: 23px;
+  }
+
+  .logo-icon {
+    font-size: 16px;
+  }
+
+  /* Right side */
+
+  .navbar-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 2px;
+  }
+
+  /* Icons */
+
+  .nav-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Hamburger */
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+
+  /* =====================================
+     MOBILE DROPDOWN
+  ===================================== */
+
+  .mobile-menu {
+    position: absolute;
+
+    top: 68px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 12px 20px 20px;
+
+    box-sizing: border-box;
+
+    background: #f8dfe5;
+
+    border-top: 1px solid #edc5cf;
+    border-bottom: 1px solid #edc5cf;
+
+    box-shadow: 0 10px 25px rgba(170, 80, 105, 0.15);
+  }
+
+
+  /* Mobile links */
+
+  .mobile-menu > a {
+    display: block;
+
+    width: 100%;
+
+    padding: 14px 5px;
+
+    box-sizing: border-box;
+
+    color: #754255;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    border-bottom: 1px solid #edc5cf;
+  }
+
+  .mobile-menu > a:hover {
+    color: #c36383;
+  }
+
+
+  /* Divider */
+
+  .mobile-divider {
+    height: 1px;
+
+    margin: 8px 0;
+
+    background: #dfacba;
+  }
+
+
+  /* Mobile user */
+
+  .mobile-user {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 14px 5px;
+
+    color: #c36383;
+
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+
+  /* Mobile logout */
+
+  .mobile-logout {
+    width: 100% !important;
+
+    padding: 11px !important;
+
+    margin: 8px 0 0 !important;
+
+    border: 1px solid #d59aae !important;
+
+    border-radius: 22px !important;
+
+    background: transparent !important;
+
+    color: #9f5b72 !important;
+
+    cursor: pointer;
+  }
+
+  .mobile-logout:hover {
+    background: #c36383 !important;
+    color: white !important;
+  }
+
+
+  /* Mobile auth */
+
+  .mobile-auth {
+    display: flex;
+
+    gap: 10px;
+
+    padding-top: 12px;
+  }
+
+  .mobile-auth a {
+    flex: 1;
+
+    padding: 11px;
+
+    text-align: center;
+
+    border: 1px solid #d59aae;
+    border-radius: 22px;
+
+    color: #9f5b72;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .mobile-auth .mobile-register {
+    background: #c36383;
+    border-color: #c36383;
+    color: white;
+  }
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media (max-width: 420px) {
+
+  .navbar {
+    padding: 0 10px;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  .nav-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .mobile-menu-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
