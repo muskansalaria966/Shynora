@@ -126,18 +126,28 @@ app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 
 // Vercel handler
-const handler = async (req, res) => {
-  try {
-    await connectDB();
-    return app(req, res);
-  } catch (error) {
-    console.error("Server error:", error);
+// const handler = async (req, res) => {
+//   try {
+//     await connectDB();
+//     return app(req, res);
+//   } catch (error) {
+//     console.error("Server error:", error);
 
-    return res.status(500).json({
-      success: false,
-      message: "Server error"
-    });
-  }
-};
+//     return res.status(500).json({
+//       success: false,
+//       message: "Server error"
+//     });
+//   }
+// };
 
-module.exports = handler;
+// module.exports = app;
+
+const PORT = process.env.PORT || 5000;
+
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
