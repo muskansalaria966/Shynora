@@ -88,6 +88,88 @@
 // // Export app for Vercel
 // module.exports = app;
 
+// const dns = require("dns");
+
+// dns.setServers([
+//   "8.8.8.8",
+//   "8.8.4.4"
+// ]);
+
+// const path = require("path");
+// const express = require("express");
+// const cors = require("cors");
+// const dotenv = require("dotenv");
+
+// dotenv.config();
+
+// const connectDB = require("./config/db");
+
+// const app = express();
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+
+// // Static uploads
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// // Test route
+// app.get("/", (req, res) => {
+//   res.json({
+//     message: "Shynora Jewels Backend is running!"
+//   });
+// });
+
+// // API routes
+// app.use("/api/products", require("./routes/productRoutes"));
+// app.use("/api/orders", require("./routes/orderRoutes"));
+// app.use("/api/auth", require("./routes/authRoutes"));
+
+// // Vercel handler
+// // const handler = async (req, res) => {
+// //   try {
+// //     await connectDB();
+// //     return app(req, res);
+// //   } catch (error) {
+// //     console.error("Server error:", error);
+
+// //     return res.status(500).json({
+// //       success: false,
+// //       message: "Server error"
+// //     });
+// //   }
+// // };
+
+// // module.exports = app;
+
+// const PORT = process.env.PORT || 5000;
+
+// // if (process.env.NODE_ENV !== "production") {
+// //   app.listen(PORT, () => {
+// //     console.log(`Server running on http://localhost:${PORT}`);
+// //   });
+// // }
+
+// // module.exports = app;
+// const startServer = async () => {
+//   try {
+//     await connectDB();
+
+//     app.listen(PORT, () => {
+//       console.log(`Server running on http://localhost:${PORT}`);
+//     });
+//   } catch (error) {
+//     console.error("MongoDB connection failed:", error.message);
+//     process.exit(1);
+//   }
+// };
+
+// if (process.env.NODE_ENV !== "production") {
+//   startServer();
+// }
+
+// module.exports = app;
+
 const dns = require("dns");
 
 dns.setServers([
@@ -125,47 +207,28 @@ app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 
-// Vercel handler
-// const handler = async (req, res) => {
-//   try {
-//     await connectDB();
-//     return app(req, res);
-//   } catch (error) {
-//     console.error("Server error:", error);
+// Connect MongoDB before handling requests
+let dbConnected = false;
 
-//     return res.status(500).json({
-//       success: false,
-//       message: "Server error"
-//     });
-//   }
-// };
-
-// module.exports = app;
-
-const PORT = process.env.PORT || 5000;
-
-// if (process.env.NODE_ENV !== "production") {
-//   app.listen(PORT, () => {
-//     console.log(`Server running on http://localhost:${PORT}`);
-//   });
-// }
-
-// module.exports = app;
-const startServer = async () => {
-  try {
+const ensureDB = async () => {
+  if (!dbConnected) {
     await connectDB();
-
-    app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error("MongoDB connection failed:", error.message);
-    process.exit(1);
+    dbConnected = true;
   }
 };
 
-if (process.env.NODE_ENV !== "production") {
-  startServer();
-}
+// Vercel serverless handler
+module.exports = async (req, res) => {
+  try {
+    await ensureDB();
+    return app(req, res);
+  } catch (error) {
+    console.error("Server error:", error);
 
-module.exports = app;
+    return res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: error.message
+    });
+  }
+};
