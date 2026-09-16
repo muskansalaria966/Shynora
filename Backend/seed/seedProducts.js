@@ -12,6 +12,7 @@ const Product = require("../models/Product");
 
 dotenv.config();
 
+
 /*
 =========================================
 JEWELLERY DATA
@@ -27,7 +28,7 @@ const jewelleryData = {
         name: "Classic Gold Necklace",
         price: "₹42,999",
         image:
-          "images/necklace.jpg",
+          "",
       },
       {
         id: 2,
@@ -44,14 +45,14 @@ const jewelleryData = {
         name: "Diamond Necklace Set",
         price: "₹1,25,999",
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2C0bSJTp0A7-tyVJ6Su-OYAfftcHC8YlOUbh9DXvkHQ&s=10",
+          "jewelryImages.diamondNecklace",
       },
       {
         id: 4,
         name: "Luxury Diamond Necklace",
         price: "₹1,75,999",
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOlvTpCcWcLvY2mvam19_16ypJeuSTlZa7Sbw4Iiypvw&s=10",
+          "jewelryImages.diamondNecklace",
       },
     ],
 
@@ -61,14 +62,14 @@ const jewelleryData = {
         name: "Royal Bridal Necklace",
         price: "₹2,10,999",
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkHopqPbGEhnKH5vmhC51FZt_gR4acBFZeGPDK4jjNPQ&s=10",
+          "jewelryImages.bridalJewelry",
       },
       {
         id: 6,
         name: "Temple Bridal Necklace",
-        price: "₹2,45,999",
+        price: "₹45,999",
         image:
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9zppDbNM5Q31YE67TOr9HMAtSYfcdckkTVMq0mm6aIg&s=10",
+          "jewelryImages.bridalJewelry",
       },
     ],
 
@@ -78,7 +79,7 @@ const jewelleryData = {
         name: "Gold Choker Necklace",
         price: "₹65,999",
         image:
-          "",
+          "jewelryImages.goldNecklace",
       },
       {
         id: 8,
@@ -155,7 +156,7 @@ const jewelleryData = {
       {
         name: "Temple Ring",
         price: "₹25,999",
-        image: "/images/e1.jpg",
+        image: "",
       },
     ],
 
@@ -366,7 +367,7 @@ const jewelleryData = {
       {
         name: "HathPhool",
         price: "₹22,999",
-        image: "",
+        image: "necklace/hathphool.jpeg",
       },
       {
         name: "Phool",

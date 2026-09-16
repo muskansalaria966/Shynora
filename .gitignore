@@ -3,3 +3,4 @@ Backend/.env
 node_modules/
 .vscode/
 *.zip
+Backend/uploads/
