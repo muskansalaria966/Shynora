@@ -162,7 +162,7 @@ const Navbar = () => {
       {/* LOGO */}
       <Link to="/" className="logo" onClick={closeMenu}>
         <span className="logo-icon">✦</span>
-        <span>Jewels</span>
+        <span>Shynora</span>
       </Link>
 
       {/* DESKTOP LINKS */}

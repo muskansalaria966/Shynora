@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="footer-main">
         <div className="footer-brand">
-          <h3>LuxeJewels</h3>
+          <h3>Shynora</h3>
           <p>
             Timeless jewellery crafted to celebrate your most beautiful
             moments.
@@ -35,13 +35,13 @@ const Footer = () => {
           <p>Discover new arrivals, collections and jewellery inspiration.</p>
 
           <div className="footer-email">
-            <span>hello@luxejewels.com</span>
+            <span>hello@shynora.com</span>
           </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>© 2026 LuxeJewels. All Rights Reserved.</p>
+        <p>© 2026 Shynora. All Rights Reserved.</p>
 
         <span>Crafted with elegance ♡</span>
       </div>

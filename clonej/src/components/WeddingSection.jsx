@@ -55,14 +55,14 @@ function WeddingSection() {
 
   return (
     <section className="wedding-section">
-      <div className="wedding-banner">
+      {/* <div className="wedding-banner">
         <div className="banner-inner">
           <span className="banner-small">THE</span>
           <h2>GRAND</h2>
           <h3>WEDDING STORE</h3>
           <p>Celebrate every beautiful beginning</p>
         </div>
-      </div>
+      </div> */}
 
       <div className="wedding-categories">
         <div className="wedding-heading">

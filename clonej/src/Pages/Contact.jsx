@@ -14,10 +14,10 @@ const ContactPage = () => {
             explore our latest collections, our team is here to assist you.
           </p>
 
-          <div className="info-card">
+          {/* <div className="info-card">
             <h3>📍 Visit Our Store</h3>
             <p>123 Ranjit Avenue, Amritsar</p>
-          </div>
+          </div> */}
 
           <div className="info-card">
             <h3>📞 Call Us</h3>
@@ -26,7 +26,7 @@ const ContactPage = () => {
 
           <div className="info-card">
             <h3>✉ Email</h3>
-            <p>support@luxejewels.com</p>
+            <p>support@shynora.com</p>
           </div>
         </div>
 

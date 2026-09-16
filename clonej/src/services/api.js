@@ -16,12 +16,20 @@ const getUser = () => {
   return JSON.parse(localStorage.getItem("user") || "null");
 };
 
-const authHeaders = () => {
-  const user = getUser();
+// const authHeaders = () => {
+//   const user = getUser();
 
-  return user?.token
-    ? { Authorization: `Bearer ${user.token}` }
-    : {};
+//   return user?.token
+//     ? { Authorization: `Bearer ${user.token}` }
+//     : {};
+// };
+
+export const authHeaders = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  return {
+    Authorization: `Bearer ${user?.token || ""}`,
+  };
 };
 
 export const getProducts = async () => {
@@ -125,32 +133,78 @@ export const createOrder = async (orderData) => {
 
 
 
+// export const deleteProduct = async (id) => {
+//   const user = JSON.parse(localStorage.getItem("user"));
+//   const response = await fetch(`${API_URL}/products/${id}`, {
+//     method: "DELETE",
+//     headers: {
+//       Authorization: `Bearer ${user.token}`,
+//     },
+//   });
+
+//   const data = await response.json();
+
+//   if (!response.ok) {
+//     throw new Error("Failed to delete product");
+//   }
+
+//   return response.json();
+// };
+
 export const deleteProduct = async (id) => {
-  const user = JSON.parse(localStorage.getItem("user"));
   const response = await fetch(`${API_URL}/products/${id}`, {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${user.token}`,
+      ...authHeaders(),
     },
   });
 
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error("Failed to delete product");
+    throw new Error(data.message || "Failed to delete product");
   }
 
-  return response.json();
+  return data;
 };
+// export const createProduct = async (formData) => {
+//   const response = await fetch(`${API_URL}/products`, {
+//     method: "POST",
+//     headers:{
+//       ...authHeaders(),
+//     },
+//     body: formData,
+//   });
+
+//   const data = await response.json();
+
+//   if (!response.ok) {
+//     throw new Error(data.message || "Failed to create product");
+//   }
+
+//   return data;
+// };
 
 export const createProduct = async (formData) => {
   const response = await fetch(`${API_URL}/products`, {
     method: "POST",
-    headers:{
+    headers: {
       ...authHeaders(),
     },
     body: formData,
   });
+
+  const contentType = response.headers.get("content-type");
+
+  if (!contentType || !contentType.includes("application/json")) {
+    const text = await response.text();
+
+    console.error("Non-JSON response:", text);
+
+    throw new Error(
+      "Server returned HTML instead of JSON. Check the API URL."
+    );
+  }
 
   const data = await response.json();
 
@@ -161,19 +215,44 @@ export const createProduct = async (formData) => {
   return data;
 };
 
+// export const updateProduct = async (id, formData) => {
+//   const response = await fetch(`${API_URL}/products/${id}`, {
+//     method: "PUT",
+//     headers:{
+//       ...authHeaders(),
+//     },
+//     body: formData,
+//   });
+
+//   const data = await response.json();
+
+//   if (!response.ok) {
+//     throw new Error(data.message);
+//   }
+
+//   return data;
+// };
 export const updateProduct = async (id, formData) => {
   const response = await fetch(`${API_URL}/products/${id}`, {
     method: "PUT",
-    headers:{
+    headers: {
       ...authHeaders(),
     },
     body: formData,
   });
 
+  const contentType = response.headers.get("content-type");
+
+  if (!contentType || !contentType.includes("application/json")) {
+    const text = await response.text();
+    console.error("Non-JSON response:", text);
+    throw new Error("Server returned HTML instead of JSON. Check API URL.");
+  }
+
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message);
+    throw new Error(data.message || "Failed to update product");
   }
 
   return data;
