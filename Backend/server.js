@@ -170,6 +170,69 @@
 
 // module.exports = app;
 
+// const dns = require("dns");
+
+// dns.setServers([
+//   "8.8.8.8",
+//   "8.8.4.4"
+// ]);
+
+// const path = require("path");
+// const express = require("express");
+// const cors = require("cors");
+// const dotenv = require("dotenv");
+
+// dotenv.config();
+
+// const connectDB = require("./config/db");
+
+// const app = express();
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+
+// // Static uploads
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// // Test route
+// app.get("/", (req, res) => {
+//   res.json({
+//     message: "Shynora Jewels Backend is running!"
+//   });
+// });
+
+// // API routes
+// app.use("/api/products", require("./routes/productRoutes"));
+// app.use("/api/orders", require("./routes/orderRoutes"));
+// app.use("/api/auth", require("./routes/authRoutes"));
+
+// // Connect MongoDB before handling requests
+// let dbConnected = false;
+
+// const ensureDB = async () => {
+//   if (!dbConnected) {
+//     await connectDB();
+//     dbConnected = true;
+//   }
+// };
+
+// // Vercel serverless handler
+// module.exports = async (req, res) => {
+//   try {
+//     await ensureDB();
+//     return app(req, res);
+//   } catch (error) {
+//     console.error("Server error:", error);
+
+//     return res.status(500).json({
+//       success: false,
+//       message: "Server error",
+//       error: error.message
+//     });
+//   }
+// };
+
 const dns = require("dns");
 
 dns.setServers([
@@ -183,8 +246,6 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 
 dotenv.config();
-
-const connectDB = require("./config/db");
 
 const app = express();
 
@@ -207,28 +268,5 @@ app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 
-// Connect MongoDB before handling requests
-let dbConnected = false;
-
-const ensureDB = async () => {
-  if (!dbConnected) {
-    await connectDB();
-    dbConnected = true;
-  }
-};
-
-// Vercel serverless handler
-module.exports = async (req, res) => {
-  try {
-    await ensureDB();
-    return app(req, res);
-  } catch (error) {
-    console.error("Server error:", error);
-
-    return res.status(500).json({
-      success: false,
-      message: "Server error",
-      error: error.message
-    });
-  }
-};
+// Export Express app for Vercel
+module.exports = app;
