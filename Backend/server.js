@@ -278,12 +278,18 @@ dns.setServers([
   "8.8.4.4"
 ]);
 
+const mongoose = require("mongoose");
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
 dotenv.config();
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((error) => console.error("MongoDB connection error:", error));
+
 
 const app = express();
 
