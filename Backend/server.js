@@ -233,6 +233,44 @@
 //   }
 // };
 
+// const dns = require("dns");
+
+// dns.setServers([
+//   "8.8.8.8",
+//   "8.8.4.4"
+// ]);
+
+// const path = require("path");
+// const express = require("express");
+// const cors = require("cors");
+// const dotenv = require("dotenv");
+
+// dotenv.config();
+
+// const app = express();
+
+// // Middleware
+// app.use(cors());
+// app.use(express.json());
+
+// // Static uploads
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// // Test route
+// app.get("/", (req, res) => {
+//   res.json({
+//     message: "Shynora Jewels Backend is running!"
+//   });
+// });
+
+// // API routes
+// app.use("/api/products", require("./routes/productRoutes"));
+// app.use("/api/orders", require("./routes/orderRoutes"));
+// app.use("/api/auth", require("./routes/authRoutes"));
+
+// // Export Express app for Vercel
+// module.exports = app;
+
 const dns = require("dns");
 
 dns.setServers([
@@ -249,24 +287,19 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Static uploads
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Test route
 app.get("/", (req, res) => {
   res.json({
     message: "Shynora Jewels Backend is running!"
   });
 });
 
-// API routes
 app.use("/api/products", require("./routes/productRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 
-// Export Express app for Vercel
 module.exports = app;
