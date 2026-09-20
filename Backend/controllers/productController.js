@@ -1,6 +1,22 @@
 
 const mongoose = require("mongoose");
 const Product = require("../models/Product");
+const cloudinary = require("../config/cloudinary");
+
+const uploadToCloudinary = async (file) => {
+  if (!file) return "";
+
+  const base64 = file.buffer.toString("base64");
+
+  const dataUri = `data:${file.mimetype};base64,${base64}`;
+
+  const result = await cloudinary.uploader.upload(dataUri, {
+    folder: "shynora/products",
+    resource_type: "image",
+  });
+
+  return result.secure_url;
+};
 
 // =====================================
 // GET ALL PRODUCTS / FILTER BY CATEGORY
@@ -112,9 +128,10 @@ const createProduct = async (req, res) => {
       });
     }
 
-    const image = req.file
-      ? `/uploads/${req.file.filename}`
-      : "";
+    // const image = req.file
+    //   ? `/uploads/${req.file.filename}`
+    //   : "";
+    const image = await uploadToCloudinary(req.file);
 
     const product = await Product.create({
       name: name.trim(),
@@ -268,10 +285,14 @@ const updateProduct = async (req, res) => {
     }
 
     // Image
+    // if (req.file) {
+    //   product.image =
+    //     `/uploads/${req.file.filename}`;
+    // }
+
     if (req.file) {
-      product.image =
-        `/uploads/${req.file.filename}`;
-    }
+  product.image = await uploadToCloudinary(req.file);
+}
 
     await product.save();
 
