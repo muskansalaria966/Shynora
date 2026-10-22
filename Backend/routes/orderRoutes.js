@@ -71,38 +71,13 @@ const {
 
 const router = express.Router();
 
-// =====================================
-// CREATE ORDER
-// Logged-in users only
-// =====================================
-
 router.post("/", protect, createOrder);
-
-// =====================================
-// GET ALL ORDERS
-// Admin only
-// =====================================
 
 router.get("/", protect, admin, getOrders);
 
-// =====================================
-// GET MY ORDERS
-// Logged-in user
-// =====================================
-
 router.get("/my-orders", protect, getMyOrders);
 
-// =====================================
-// GET SINGLE ORDER
-// Owner or admin
-// =====================================
-
 router.get("/:id", protect, getOrderById);
-
-// =====================================
-// UPDATE ORDER STATUS
-// Admin only
-// =====================================
 
 router.put("/:id", protect, admin, updateOrderStatus);
 

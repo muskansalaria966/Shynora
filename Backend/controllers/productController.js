@@ -284,11 +284,6 @@ const updateProduct = async (req, res) => {
         featured === true || featured === "true";
     }
 
-    // Image
-    // if (req.file) {
-    //   product.image =
-    //     `/uploads/${req.file.filename}`;
-    // }
 
     if (req.file) {
   product.image = await uploadToCloudinary(req.file);
@@ -311,43 +306,6 @@ const updateProduct = async (req, res) => {
   }
 };
 
-// =====================================
-// DELETE PRODUCT - ADMIN
-// =====================================
-
-// const deleteProduct = async (req, res) => {
-//   try {
-//     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-//       return res.status(400).json({
-//         success: false,
-//         message: "Invalid product ID",
-//       });
-//     }
-
-//     const product = await Product.findByIdAndDelete(
-//       req.params.id
-//     );
-
-//     if (!product) {
-//       return res.status(404).json({
-//         success: false,
-//         message: "Product not found",
-//       });
-//     }
-
-//     return res.status(200).json({
-//       success: true,
-//       message: "Product deleted successfully",
-//     });
-//   } catch (error) {
-//     console.error("Delete product error:", error);
-
-//     return res.status(500).json({
-//       success: false,
-//       message: "Failed to delete product",
-//     });
-//   }
-// };
 const deleteProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
